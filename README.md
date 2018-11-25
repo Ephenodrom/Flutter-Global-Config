@@ -21,7 +21,7 @@ Update pubspec.yaml and add the following line to your dependencies.
 
 ```yaml
 dependencies:
-  global_configuration: ^0.1.0
+  global_configuration: ^0.1.1
 ```
 
 
