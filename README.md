@@ -1,4 +1,4 @@
-# global_configuration
+# Flutter Global Configuration
 
 A flutter package for managing different configurations and making them available everythere inside the app.
 
