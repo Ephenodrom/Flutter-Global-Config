@@ -17,7 +17,7 @@ Update pubspec.yaml and add the following line to your dependencies.
 
 ```yaml
 dependencies:
-  global_configuration: ^0.0.1
+  global_configuration: ^0.1.0
 ```
 
 
@@ -77,12 +77,15 @@ class CustomWidget extends StatelessWidget {
 }
 
 ```
+### Full example
+You can find a full example in the [example folder](/example/main.dart).
 
 ## Upcoming
-Here is a list of planned features
+Here is a list of possible upcoming features
 * Load config from file
 * Load config from shared preferences
 * Update config in shared preferences
+* Allow multiple keys with the same name
 
 
 ## Changelog
