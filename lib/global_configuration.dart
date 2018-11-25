@@ -1,6 +1,8 @@
+library global_configuration;
+
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
-library global_configuration;
+
 
 ///
 /// Class for managing different configuration.
