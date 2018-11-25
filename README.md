@@ -6,6 +6,10 @@ A flutter package for managing different configurations and making them availabl
 1. [Install](#install)
    * [pubspec.yaml](#pubspec.yaml)
 2. [Usage](#usage)
+   * [Creating a configuration file](#creating-a-configuration-file)
+   * [Load configuration at app start](#load-configuration-at-app-start)
+   * [Use configuration in your app](#use-configuration-in-your-app)
+   * [Simple example](#simple-example)
 3. [Upcoming](#upcoming)
 4. [Changelog](#changelog)
 5. [Copyright and license](#copyright-and-license)
@@ -77,7 +81,7 @@ class CustomWidget extends StatelessWidget {
 }
 
 ```
-### Full example
+### Simple example
 You can find a full example in the [example folder](/example/main.dart).
 
 ## Upcoming
