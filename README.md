@@ -17,12 +17,11 @@ Update pubspec.yaml and add the following line to your dependencies.
 
 ```yaml
 dependencies:
-...yaml
   global_configuration: ^0.0.1
 ```
 
 
-##Usage
+## Usage
 ### Creating a configuration file
 Create a dart file which includes your configuration and import it in your main file.
 Example filename: /config/app_settings.config.dart
