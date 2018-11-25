@@ -6,10 +6,9 @@ A flutter package for managing different configurations and making them availabl
 1. [Install](#install)
    * [pubspec.yaml](#pubspec.yaml)
 2. [Loading configuration](#loading-configuration)
-   * [Creating a configuration file](#creating-a-configuration-file)
-   * [Load configuration at app start](#load-configuration-at-app-start)
-   * [Use configuration in your app](#use-configuration-in-your-app)
-   * [Simple example](#simple-example)
+   * [Load from asset](#load-from-asset)
+   * [Load from shared preferences](#load-from-shared-preferences)
+   * [Load from map inside .dart file](#load-from-map-inside-.dart-file)
 3. [Using the configuration in your app](#using-the-configuration-in-your-app
 4. [Upcoming](#upcoming)
 5. [Changelog](#changelog)
@@ -33,12 +32,18 @@ There are many ways where you can store your configuration files and load them.
 Create a .json file and place it under assets/cfg/
 Example filename: assets/cfg/app_settings.json
 
-```
+```json
 {
   "key1": "value1",
   "key2": "value2"
 }
 
+```
+Remember to update your pubspec.yaml file, so the config can be loaded from the assets directory!
+```dart
+flutter:
+ assets:
+  - assets/cfg/
 ```
 
 #### Load configuration at app start
@@ -137,6 +142,8 @@ Here is a list of possible upcoming features
 - Fill README.md with content and examples
 ### Version 0.1.0 (2018-11-25)
 - Add example folder
+### Version 0.1.0 (2018-11-25)
+- Add loading file from asset folder
 
 ## Copyright and license
 MIT License
