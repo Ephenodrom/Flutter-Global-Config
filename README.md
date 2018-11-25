@@ -5,14 +5,15 @@ A flutter package for managing different configurations and making them availabl
 ## Table of Contents
 1. [Install](#install)
    * [pubspec.yaml](#pubspec.yaml)
-2. [Usage](#usage)
+2. [Loading configuration](#loading-configuration)
    * [Creating a configuration file](#creating-a-configuration-file)
    * [Load configuration at app start](#load-configuration-at-app-start)
    * [Use configuration in your app](#use-configuration-in-your-app)
    * [Simple example](#simple-example)
-3. [Upcoming](#upcoming)
-4. [Changelog](#changelog)
-5. [Copyright and license](#copyright-and-license)
+3. [Using the configuration in your app](#using-the-configuration-in-your-app
+4. [Upcoming](#upcoming)
+5. [Changelog](#changelog)
+6. [Copyright and license](#copyright-and-license)
 
 ## Install
 ### pubspec.yaml
@@ -25,8 +26,46 @@ dependencies:
 ```
 
 
-## Usage
-### Creating a configuration file
+## Loading configuration
+There are many ways where you can store your configuration files and load them.
+### Load from asset
+#### Creating a configuration file
+Create a .json file and place it under assets/cfg/
+Example filename: assets/cfg/app_settings.json
+
+```
+{
+  "key1": "value1",
+  "key2": "value2"
+}
+
+```
+
+#### Load configuration at app start
+
+Import the package with : import 'package:global_configuration/global_configuration.dart';
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:global_configuration/global_configuration.dart';
+
+void main() async{
+  GlobalConfiguration cfg = new GlobalConfiguration();
+  await cfg.loadFromAsset("app_settings");
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  ...
+}
+
+```
+
+### Load from shared preferences
+!!! TODO !!!
+
+### Load from map inside .dart file
+
+#### Creating a configuration file
 Create a dart file which includes your configuration and import it in your main file.
 Example filename: /config/app_settings.config.dart
 
@@ -38,7 +77,7 @@ final Map<String, String> appSettings = {
 
 ```
 
-### Load configuration at app start
+#### Load configuration at app start
 
 Import the package with : import 'package:global_configuration/global_configuration.dart';
 
@@ -58,8 +97,9 @@ class MyApp extends StatelessWidget {
 
 ```
 
-### Use configuration in your app
-Now instatiate the GlobalConfiguration class and call the getConfig($key) method.
+## Using the configuration in your app
+Instatiate the GlobalConfiguration class and call the getAppConfig($key) or getSharedConfig($key) method.
+
 ```dart
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
@@ -86,8 +126,6 @@ You can find a full example in the [example folder](/example/main.dart).
 
 ## Upcoming
 Here is a list of possible upcoming features
-* Load config from file
-* Load config from shared preferences
 * Update config in shared preferences
 * Allow multiple keys with the same name
 
