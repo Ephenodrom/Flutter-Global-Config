@@ -122,7 +122,7 @@ class CustomWidget extends StatelessWidget {
      Widget build(BuildContext context) {
         // Access the config in the build method
         GlobalConfiguration cfg = new GlobalConfiguration();
-        return new Text(cfg.getConfig("key2"));
+        return new Text(cfg.getAppConfig("key2"));
      }
 }
 
