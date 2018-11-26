@@ -125,7 +125,7 @@ class CustomWidget extends StatelessWidget {
 You can find a full example in the [example folder](/example/main.dart).
 
 ## Changelog
-For a detailed changelog, see the [CHANGELOG.md](CHANGELOG.md)file
+For a detailed changelog, see the [CHANGELOG.md](CHANGELOG.md) file
 
 ## Copyright and license
 MIT License
