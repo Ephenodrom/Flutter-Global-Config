@@ -11,9 +11,8 @@ A flutter package for managing different configurations and making them availabl
    * [Load from map inside .dart file](#load-from-map-inside-.dart-file)
 3. [Using the configuration in your app](#using-the-configuration-in-your-app)
 4. [Full Example](#full-example)
-5. [Upcoming](#upcoming)
-6. [Changelog](#changelog)
-7. [Copyright and license](#copyright-and-license)
+5. [Changelog](#changelog)
+6. [Copyright and license](#copyright-and-license)
 
 ## Install
 ### pubspec.yaml
@@ -22,7 +21,7 @@ Update pubspec.yaml and add the following line to your dependencies.
 
 ```yaml
 dependencies:
-  global_configuration: ^0.1.1
+  global_configuration: ^0.1.2
 ```
 
 
@@ -56,8 +55,7 @@ import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
 
 void main() async{
-  GlobalConfiguration cfg = new GlobalConfiguration();
-  await cfg.loadFromAsset("app_settings");
+  await GlobalConfiguration().loadFromAsset("app_settings");
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -65,9 +63,6 @@ class MyApp extends StatelessWidget {
 }
 
 ```
-
-### Load from shared preferences
-!!! TODO !!!
 
 ### Load from map inside .dart file
 
@@ -93,8 +88,7 @@ import 'package:global_configuration/global_configuration.dart';
 import 'config/Config1.config.dart';
 
 void main(){
-  GlobalConfiguration cfg = new GlobalConfiguration();
-  cfg.loadFromMap(appSettings);
+  GlobalConfiguration().loadFromMap(appSettings);
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -115,27 +109,20 @@ class CustomWidget extends StatelessWidget {
     CustomWiget(){
         // Access the config in the constructor
         GlobalConfiguration cfg = new GlobalConfiguration();
-        print(cfg.getAppConfig("key1"); // prints value1
+        print(cfg.getString("key1"); // prints value1
     }
 
     @override
      Widget build(BuildContext context) {
         // Access the config in the build method
         GlobalConfiguration cfg = new GlobalConfiguration();
-        return new Text(cfg.getAppConfig("key2"));
+        return new Text(cfg.getString("key2"));
      }
 }
 
 ```
 ### Full example
 You can find a full example in the [example folder](/example/main.dart).
-
-## Upcoming
-Here is a list of possible upcoming features
-* Loading json config from the shared preference
-* Update / delete / create config in shared preferences
-* Generating a configuration class with getter & setter from different sources
-
 
 ## Changelog
 For a detailed changelog, see the [CHANGELOG.md](CHANGELOG.md)file

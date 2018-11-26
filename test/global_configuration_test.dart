@@ -16,7 +16,7 @@ void main() {
     };
     cfg.loadFromMap(config1);
     cfg.loadFromMap(config2);
-    expect(cfg.getAppConfig("key1"), "value1");
-    expect(cfg.getAppConfig("key3"), "value3");
+    expect(cfg.getString("key1"), "value1");
+    expect(cfg.getString("key3"), "value3");
   });
 }

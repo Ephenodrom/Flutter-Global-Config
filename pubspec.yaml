@@ -1,6 +1,6 @@
 name: global_configuration
 description: A flutter package for managing different configurations and making them available everythere inside the app.
-version: 0.1.1
+version: 0.1.2
 author: Daniel Linsenmeier <daniel@ephenodrom.de>
 homepage: https://github.com/Ephenodrom/Flutter-Global-Config
 publish_to: https://pub.dartlang.org
