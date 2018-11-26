@@ -1,29 +1,33 @@
 # Flutter Global Configuration
 
-A flutter package for managing different configurations and making them available everythere inside the app.
+A flutter package for managing different configurations by merging them together and making
+them available everythere inside the app via a singleton.
 
 ## Table of Contents
 1. [Install](#install)
    * [pubspec.yaml](#pubspec.yaml)
-2. [Loading configuration](#loading-configuration)
+2. [Import](#import)
+3. [Loading configuration](#loading-configuration)
    * [Load from asset](#load-from-asset)
    * [Load from shared preferences](#load-from-shared-preferences)
    * [Load from map inside .dart file](#load-from-map-inside-.dart-file)
-3. [Using the configuration in your app](#using-the-configuration-in-your-app)
-4. [Full Example](#full-example)
-5. [Changelog](#changelog)
-6. [Copyright and license](#copyright-and-license)
+4. [Using the configuration in your app](#using-the-configuration-in-your-app)
+5. [Full Example](#full-example)
+6. [Changelog](#changelog)
+7. [Copyright and license](#copyright-and-license)
 
 ## Install
 ### pubspec.yaml
-
 Update pubspec.yaml and add the following line to your dependencies.
-
 ```yaml
 dependencies:
   global_configuration: ^0.1.2
 ```
 
+## Import
+```yaml
+Import the package with : import 'package:global_configuration/global_configuration.dart';
+```
 
 ## Loading configuration
 There are many ways where you can store your configuration files and load them.
@@ -40,16 +44,14 @@ Example filename: assets/cfg/app_settings.json
 
 ```
 Remember to update your pubspec.yaml file, so the config can be loaded from the assets directory!
-```dart
+The config files must be placed under the assets/cfg/ directory.
+```yaml
 flutter:
  assets:
   - assets/cfg/
 ```
 
 #### Load configuration at app start
-
-Import the package with : import 'package:global_configuration/global_configuration.dart';
-
 ```dart
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
