@@ -9,10 +9,11 @@ A flutter package for managing different configurations and making them availabl
    * [Load from asset](#load-from-asset)
    * [Load from shared preferences](#load-from-shared-preferences)
    * [Load from map inside .dart file](#load-from-map-inside-.dart-file)
-3. [Using the configuration in your app](#using-the-configuration-in-your-app
-4. [Upcoming](#upcoming)
-5. [Changelog](#changelog)
-6. [Copyright and license](#copyright-and-license)
+3. [Using the configuration in your app](#using-the-configuration-in-your-app)
+4. [Full Example](#full-example)
+5. [Upcoming](#upcoming)
+6. [Changelog](#changelog)
+7. [Copyright and license](#copyright-and-license)
 
 ## Install
 ### pubspec.yaml
@@ -93,7 +94,7 @@ import 'config/Config1.config.dart';
 
 void main(){
   GlobalConfiguration cfg = new GlobalConfiguration();
-  cfg.load(appSettings);
+  cfg.loadFromMap(appSettings);
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -114,7 +115,7 @@ class CustomWidget extends StatelessWidget {
     CustomWiget(){
         // Access the config in the constructor
         GlobalConfiguration cfg = new GlobalConfiguration();
-        print(cfg.getConfig("key1"); // prints value1
+        print(cfg.getAppConfig("key1"); // prints value1
     }
 
     @override
@@ -126,24 +127,18 @@ class CustomWidget extends StatelessWidget {
 }
 
 ```
-### Simple example
+### Full example
 You can find a full example in the [example folder](/example/main.dart).
 
 ## Upcoming
 Here is a list of possible upcoming features
-* Update config in shared preferences
-* Allow multiple keys with the same name
+* Loading json config from the shared preference
+* Update / delete / create config in shared preferences
+* Generating a configuration class with getter & setter from different sources
 
 
 ## Changelog
-### Version 0.0.1 (2018-11-25)
-- Initial release
-### Version 0.0.2 (2018-11-25)
-- Fill README.md with content and examples
-### Version 0.1.0 (2018-11-25)
-- Add example folder
-### Version 0.1.0 (2018-11-25)
-- Add loading file from asset folder
+For a detailed changelog, see the [CHANGELOG.md](CHANGELOG.md)file
 
 ## Copyright and license
 MIT License
