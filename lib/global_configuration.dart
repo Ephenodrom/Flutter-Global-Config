@@ -55,4 +55,8 @@ class GlobalConfiguration {
   /// Reads a value from persistent storage, throwing an exception if it's not a
   /// String.
   String getString(String key) => appConfig[key];
+  
+  /// Adds any type to the persistent storage.
+  add(Map<String,dynamic> map) => appConfig.addAll(map);
+
 }
