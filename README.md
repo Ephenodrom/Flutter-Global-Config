@@ -25,8 +25,9 @@ dependencies:
 ```
 
 ## Import
-```yaml
-Import the package with : import 'package:global_configuration/global_configuration.dart';
+Import the package with :
+```dart
+import 'package:global_configuration/global_configuration.dart';
 ```
 
 ## Loading configuration
