@@ -3,8 +3,9 @@ import 'package:global_configuration/global_configuration.dart';
 import 'AppSettings.config.dart';
 import 'DevSettings.config.dart';
 
-void main(){
+void main() async {
   GlobalConfiguration().loadFromMap(appSettings).loadFromMap(devSettings);
+  await GlobalConfiguration().loadFromUrl("https://swapi.co/api/people/1");
   runApp(MyApp());
 }
 

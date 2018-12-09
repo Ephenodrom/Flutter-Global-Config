@@ -102,9 +102,9 @@ class MyApp extends StatelessWidget {
 It is possible to load any json configuration file from a url. Use the method loadFromUrl to load
 the config via GET request.
 Please consider using a try / catch. This method will throw an exception if the status code of the
-GET request was not 200.
+GET request is not 200.
 
-The method also accepts query parameters and headers! The header Accept: application/json is always
+The method also accepts query parameters and headers! The header "Accept: application/json" is always
 included.
 
 #### Load configuration at app start
