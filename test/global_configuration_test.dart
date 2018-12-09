@@ -19,4 +19,10 @@ void main() {
     expect(cfg.getString("key1"), "value1");
     expect(cfg.getString("key3"), "value3");
   });
+
+  test('Testing loading json into config from url.', () async{
+    final cfg = GlobalConfiguration();
+    await cfg.loadFromUrl("https://swapi.co/api/people/1");
+    expect(cfg.getString("name"), "Luke Skywalker");
+  });
 }

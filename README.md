@@ -9,8 +9,8 @@ them available everythere inside the app via a singleton.
 2. [Import](#import)
 3. [Loading configuration](#loading-configuration)
    * [Load from asset](#load-from-asset)
-   * [Load from shared preferences](#load-from-shared-preferences)
    * [Load from map inside .dart file](#load-from-map-inside-.dart-file)
+   * [Load from url](#load-from-url)
 4. [Using the configuration in your app](#using-the-configuration-in-your-app)
 5. [Full Example](#full-example)
 6. [Changelog](#changelog)
@@ -83,8 +83,6 @@ final Map<String, String> appSettings = {
 
 #### Load configuration at app start
 
-Import the package with : import 'package:global_configuration/global_configuration.dart';
-
 ```dart
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
@@ -92,6 +90,34 @@ import 'config/Config1.config.dart';
 
 void main(){
   GlobalConfiguration().loadFromMap(appSettings);
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  ...
+}
+
+```
+
+### Load from url
+It is possible to load any json configuration file from a url. Use the method loadFromUrl to load
+the config via GET request.
+Please consider using a try / catch. This method will throw an exception if the status code of the
+GET request was not 200.
+
+The method also accepts query parameters and headers! The header Accept: application/json is always
+included.
+
+#### Load configuration at app start
+```dart
+import 'package:flutter/material.dart';
+import 'package:global_configuration/global_configuration.dart';
+
+void main() async{
+  try{
+    await GlobalConfiguration().loadFromUrl("http://urlToMyConfig.com");
+  }catch(e){
+    // something went wrong while fetching the config from the url ... do something
+  }
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
