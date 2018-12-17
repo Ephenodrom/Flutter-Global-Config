@@ -42,7 +42,7 @@ class GlobalConfiguration {
   ///
   Future<GlobalConfiguration> loadFromUrl(String url,
       {Map<String, String> queryParameters,
-      Map<String, String> headers}) async {
+        Map<String, String> headers}) async {
     Map<String, dynamic> configAsMap = await _getFromUrl(url,
         queryParameters: queryParameters, headers: headers);
     appConfig.addAll(configAsMap);
@@ -68,6 +68,13 @@ class GlobalConfiguration {
   /// String.
   String getString(String key) => appConfig[key];
 
+  /// Write a value from persistent storage, throwing an exception if it's not
+  /// the correct type
+  void setValue(key, value) =>
+      key.runtimeType != appConfig[key].runtimeType
+          ? throw("wrong type")
+          : appConfig.update(key, value);
+
   /// Adds any type to the persistent storage.
   add(Map<String, dynamic> map) => appConfig.addAll(map);
 
@@ -76,11 +83,11 @@ class GlobalConfiguration {
   ///
   Future<Map<String, dynamic>> _getFromUrl(String url,
       {Map<String, String> queryParameters,
-      Map<String, String> headers}) async {
+        Map<String, String> headers}) async {
     String finalUrl = url;
     if (queryParameters != null) {
       queryParameters.forEach((k, v) {
-        finalUrl += !finalUrl.endsWith("?") ? "?$k=$v": "&$k=$v";
+        finalUrl += !finalUrl.endsWith("?") ? "?$k=$v" : "&$k=$v";
       });
     }
     if (headers == null) {
