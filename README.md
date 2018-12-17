@@ -21,7 +21,7 @@ them available everythere inside the app via a singleton.
 Update pubspec.yaml and add the following line to your dependencies.
 ```yaml
 dependencies:
-  global_configuration: ^0.1.3
+  global_configuration: ^0.1.4
 ```
 
 ## Import

@@ -21,3 +21,7 @@
 ## [0.1.3] - 2018-12-09.
 
 * Add new method loadFromUrl
+
+## [0.1.4] - 2018-12-17.
+
+* Add new method setValue
