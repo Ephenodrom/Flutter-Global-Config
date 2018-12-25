@@ -14,7 +14,8 @@ them available everythere inside the app via a singleton.
 4. [Using the configuration in your app](#using-the-configuration-in-your-app)
 5. [Full Example](#full-example)
 6. [Changelog](#changelog)
-7. [Copyright and license](#copyright-and-license)
+7. [Support](#support)
+8. [Copyright and license](#copyright-and-license)
 
 ## Install
 ### pubspec.yaml
@@ -155,6 +156,10 @@ You can find a full example in the [example folder](/example/main.dart).
 
 ## Changelog
 For a detailed changelog, see the [CHANGELOG.md](CHANGELOG.md) file
+
+## Support
+You like this repository or use it in your project? Feel free to donatee a cup of coffee! 
+Flattr : https://flattr.com/@Ephenodrom
 
 ## Copyright and license
 MIT License
