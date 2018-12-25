@@ -158,7 +158,7 @@ You can find a full example in the [example folder](/example/main.dart).
 For a detailed changelog, see the [CHANGELOG.md](CHANGELOG.md) file
 
 ## Support
-You like this repository or use it in your project? Feel free to donatee a cup of coffee! 
+You like this repository or even use it in one of your projects? Feel free to donate a cup of coffee! 
 Flattr : https://flattr.com/@Ephenodrom
 
 ## Copyright and license
