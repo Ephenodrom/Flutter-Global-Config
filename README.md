@@ -12,10 +12,11 @@ them available everythere inside the app via a singleton.
    * [Load from map inside .dart file](#load-from-map-inside-.dart-file)
    * [Load from url](#load-from-url)
 4. [Using the configuration in your app](#using-the-configuration-in-your-app)
-5. [Full Example](#full-example)
-6. [Changelog](#changelog)
-7. [Support](#support)
-8. [Copyright and license](#copyright-and-license)
+5. [Overriding configuration](#overriding-configuration)
+6. [Full Example](#full-example)
+7. [Changelog](#changelog)
+8. [Support](#support)
+9. [Copyright and license](#copyright-and-license)
 
 ## Install
 ### pubspec.yaml
@@ -150,6 +151,24 @@ class CustomWidget extends StatelessWidget {
      }
 }
 
+```
+
+## Overriding configuration
+Sometimes it is necessary to override data in the configuration. This can be done by the setValue method.
+This method makes a check for the given type of the value and then performs an update the configuration map.
+```dart
+  Map<String, String> appSettings = {
+    "key1": "value1",
+    "key2": 1
+  };
+  
+  GlobalConfiguration().loadFromMap(appSettings); // loading the configuration
+  print(GlobalConfiguration().getString("key1")); // output : value1
+  print(GlobalConfiguration().getString("key2")); // output : 1
+  GlobalConfiguration().setValue("key1", (string) => "value2"); // update the value for key1
+  GlobalConfiguration().setValue("key2", (int) => 2); // update the value for key2
+  print(GlobalConfiguration().getString("key1")); // output : value2
+  print(GlobalConfiguration().getString("key2")); // output : 2
 ```
 ### Full example
 You can find a full example in the [example folder](/example/main.dart).
