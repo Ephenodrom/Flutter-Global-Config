@@ -9,6 +9,7 @@ them available everythere inside the app via a singleton.
 2. [Import](#import)
 3. [Loading configuration](#loading-configuration)
    * [Load from asset](#load-from-asset)
+   * [Load from path](#load-from-path) 
    * [Load from map inside .dart file](#load-from-map-inside-.dart-file)
    * [Load from url](#load-from-url)
 4. [Using the configuration in your app](#using-the-configuration-in-your-app)
@@ -19,23 +20,32 @@ them available everythere inside the app via a singleton.
 9. [Copyright and license](#copyright-and-license)
 
 ## Install
+
 ### pubspec.yaml
+
 Update pubspec.yaml and add the following line to your dependencies.
+
 ```yaml
 dependencies:
-  global_configuration: ^0.1.4
+  global_configuration: ^1.0.0
 ```
 
 ## Import
+
 Import the package with :
+
 ```dart
 import 'package:global_configuration/global_configuration.dart';
 ```
 
 ## Loading configuration
+
 There are many ways where you can store your configuration files and load them.
+
 ### Load from asset
+
 #### Creating a configuration file
+
 Create a .json file and place it under assets/cfg/
 Example filename: assets/cfg/app_settings.json
 
@@ -44,10 +54,11 @@ Example filename: assets/cfg/app_settings.json
   "key1": "value1",
   "key2": "value2"
 }
-
 ```
+
 Remember to update your pubspec.yaml file, so the config can be loaded from the assets directory!
 The config files must be placed under the assets/cfg/ directory.
+
 ```yaml
 flutter:
  assets:
@@ -55,6 +66,7 @@ flutter:
 ```
 
 #### Load configuration at app start
+
 ```dart
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
@@ -66,12 +78,33 @@ void main() async{
 class MyApp extends StatelessWidget {
   ...
 }
-
 ```
 
-### Load from map inside .dart file
+### Load from path
 
 #### Creating a configuration file
+
+Create a file anywhere inside your app. 
+
+#### Load configuration at app start
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:global_configuration/global_configuration.dart';
+
+void main(){
+  GlobalConfiguration().loadFromPath("/path/file.json");
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  ...
+}
+```
+
+### Load from map
+
+#### Creating a configuration file
+
 Create a dart file which includes your configuration and import it in your main file.
 Example filename: /config/app_settings.config.dart
 
@@ -80,7 +113,6 @@ final Map<String, String> appSettings = {
   "key1": "value1",
   "key2": "value2"
 };
-
 ```
 
 #### Load configuration at app start
@@ -97,10 +129,10 @@ void main(){
 class MyApp extends StatelessWidget {
   ...
 }
-
 ```
 
 ### Load from url
+
 It is possible to load any json configuration file from a url. Use the method loadFromUrl to load
 the config via GET request.
 Please consider using a try / catch. This method will throw an exception if the status code of the
@@ -110,6 +142,7 @@ The method also accepts query parameters and headers! The header "Accept: applic
 included.
 
 #### Load configuration at app start
+
 ```dart
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
@@ -125,11 +158,11 @@ void main() async{
 class MyApp extends StatelessWidget {
   ...
 }
-
 ```
 
 ## Using the configuration in your app
-Instatiate the GlobalConfiguration class and call the getAppConfig($key) or getSharedConfig($key) method.
+
+Instatiate the GlobalConfiguration class and call any get($key) method.
 
 ```dart
 import 'package:flutter/material.dart';
@@ -139,23 +172,22 @@ class CustomWidget extends StatelessWidget {
 
     CustomWiget(){
         // Access the config in the constructor
-        GlobalConfiguration cfg = new GlobalConfiguration();
-        print(cfg.getString("key1"); // prints value1
+        print(GlobalConfiguration().getString("key1"); // prints value1
     }
 
     @override
      Widget build(BuildContext context) {
         // Access the config in the build method
-        GlobalConfiguration cfg = new GlobalConfiguration();
-        return new Text(cfg.getString("key2"));
+        return new Text(GlobalConfiguration().getString("key2")); // prints value2
      }
 }
-
 ```
 
 ## Overriding configuration
+
 Sometimes it is necessary to override data in the configuration. This can be done by the setValue method.
 This method makes a check for the given type of the value and then performs an update the configuration map.
+
 ```dart
   Map<String, String> appSettings = {
     "key1": "value1",
@@ -170,20 +202,25 @@ This method makes a check for the given type of the value and then performs an u
   print(GlobalConfiguration().getString("key1")); // output : value2
   print(GlobalConfiguration().getString("key2")); // output : 2
 ```
+
 ### Full example
+
 You can find a full example in the [example folder](/example/main.dart).
 
 ## Changelog
+
 For a detailed changelog, see the [CHANGELOG.md](CHANGELOG.md) file
 
 ## Support
+
 You like this repository or even use it in one of your projects? Feel free to donate a cup of coffee! 
 Flattr : https://flattr.com/@Ephenodrom
 
 ## Copyright and license
+
 MIT License
 
-Copyright (c) 2018 Ephenodrom
+Copyright (c) 2019 Ephenodrom
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
