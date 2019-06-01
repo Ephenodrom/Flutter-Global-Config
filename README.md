@@ -4,12 +4,13 @@ A flutter package for managing different configurations by merging them together
 them available everythere inside the app via a singleton.
 
 ## Table of Contents
+
 1. [Install](#install)
    * [pubspec.yaml](#pubspec.yaml)
 2. [Import](#import)
 3. [Loading configuration](#loading-configuration)
    * [Load from asset](#load-from-asset)
-   * [Load from path](#load-from-path) 
+   * [Load from path](#load-from-path)
    * [Load from map inside .dart file](#load-from-map-inside-.dart-file)
    * [Load from url](#load-from-url)
 4. [Using the configuration in your app](#using-the-configuration-in-your-app)
@@ -44,7 +45,7 @@ There are many ways where you can store your configuration files and load them.
 
 ### Load from asset
 
-#### Creating a configuration file
+#### Creating a configuration file inside assets/cfg folder
 
 Create a .json file and place it under assets/cfg/
 Example filename: assets/cfg/app_settings.json
@@ -65,7 +66,7 @@ flutter:
   - assets/cfg/
 ```
 
-#### Load configuration at app start
+#### Load configuration from assets at app start
 
 ```dart
 import 'package:flutter/material.dart';
@@ -82,11 +83,11 @@ class MyApp extends StatelessWidget {
 
 ### Load from path
 
-#### Creating a configuration file
+#### Creating a configuration file anywhere
 
-Create a file anywhere inside your app. 
+Create a file anywhere inside your app.
 
-#### Load configuration at app start
+#### Load configuration fro path at app start
 
 ```dart
 import 'package:flutter/material.dart';
@@ -103,7 +104,7 @@ class MyApp extends StatelessWidget {
 
 ### Load from map
 
-#### Creating a configuration file
+#### Creating a configuration inside .dart file
 
 Create a dart file which includes your configuration and import it in your main file.
 Example filename: /config/app_settings.config.dart
@@ -115,7 +116,7 @@ final Map<String, String> appSettings = {
 };
 ```
 
-#### Load configuration at app start
+#### Load configuration from map at app start
 
 ```dart
 import 'package:flutter/material.dart';
@@ -141,7 +142,7 @@ GET request is not 200.
 The method also accepts query parameters and headers! The header "Accept: application/json" is always
 included.
 
-#### Load configuration at app start
+#### Load configuration from url at app start
 
 ```dart
 import 'package:flutter/material.dart';
@@ -213,8 +214,8 @@ For a detailed changelog, see the [CHANGELOG.md](CHANGELOG.md) file
 
 ## Support
 
-You like this repository or even use it in one of your projects? Feel free to donate a cup of coffee! 
-Flattr : https://flattr.com/@Ephenodrom
+You like this repository or even use it in one of your projects? Feel free to donate a cup of coffee!
+Flattr : <https://flattr.com/@Ephenodrom>
 
 ## Copyright and license
 
