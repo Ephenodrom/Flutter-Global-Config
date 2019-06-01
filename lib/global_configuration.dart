@@ -6,7 +6,7 @@ import 'dart:convert';
 
 ///
 /// Class for managing different configuration.
-/// Use it with new GlobalConfiguration() to access the singleton.
+/// Use it with GlobalConfiguration() to access the singleton.
 ///
 class GlobalConfiguration {
   static GlobalConfiguration _singleton = new GlobalConfiguration._internal();
@@ -20,15 +20,16 @@ class GlobalConfiguration {
   Map<String, dynamic> appConfig = Map<String, dynamic>();
 
   ///
-  /// Loading a configuration map into the current app config.
+  /// Loading a configuration [map] into the current app config.
   ///
-  GlobalConfiguration loadFromMap(Map<String, dynamic> config) {
-    appConfig.addAll(config);
+  GlobalConfiguration loadFromMap(Map<String, dynamic> map) {
+    appConfig.addAll(map);
     return _singleton;
   }
 
   ///
-  /// Loading a json configuration file into the current app config.
+  /// Loading a json configuration file with the given [name] into the current app config.
+  /// The file has to be placed at assets/cfg/
   ///
   Future<GlobalConfiguration> loadFromAsset(String name) async {
     String content = await rootBundle.loadString("assets/cfg/$name.json");
@@ -38,7 +39,19 @@ class GlobalConfiguration {
   }
 
   ///
-  /// Loading a configuration file from a url into the current app config.
+  /// Loading a json configuration file from a custom [path] into the current app config.
+  ///
+  Future<GlobalConfiguration> loadFromPath(String path) async {
+    String content = await rootBundle.loadString(path);
+    Map<String, dynamic> configAsMap = json.decode(content);
+    appConfig.addAll(configAsMap);
+    return _singleton;
+  }
+
+  ///
+  /// Loading a configuration file from the given [url] into the current app config using
+  /// a http GET request to fetch the configuration. 
+  /// The request can be modified with [queryParameters] and [headers]. 
   ///
   Future<GlobalConfiguration> loadFromUrl(String url,
       {Map<String, String> queryParameters,
