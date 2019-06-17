@@ -50,12 +50,12 @@ class GlobalConfiguration {
 
   ///
   /// Loading a configuration file from the given [url] into the current app config using
-  /// a http GET request to fetch the configuration. 
-  /// The request can be modified with [queryParameters] and [headers]. 
+  /// a http GET request to fetch the configuration.
+  /// The request can be modified with [queryParameters] and [headers].
   ///
   Future<GlobalConfiguration> loadFromUrl(String url,
       {Map<String, String> queryParameters,
-        Map<String, String> headers}) async {
+      Map<String, String> headers}) async {
     Map<String, dynamic> configAsMap = await _getFromUrl(url,
         queryParameters: queryParameters, headers: headers);
     appConfig.addAll(configAsMap);
@@ -83,10 +83,9 @@ class GlobalConfiguration {
 
   /// Write a value from persistent storage, throwing an exception if it's not
   /// the correct type
-  void setValue(key, value) =>
-      key.runtimeType != appConfig[key].runtimeType
-          ? throw("wrong type")
-          : appConfig.update(key, value);
+  void setValue(key, value) => value.runtimeType != appConfig[key].runtimeType
+      ? throw ("wrong type")
+      : appConfig.update(key, (dynamic) => value);
 
   /// Adds any type to the persistent storage.
   add(Map<String, dynamic> map) => appConfig.addAll(map);
@@ -96,7 +95,7 @@ class GlobalConfiguration {
   ///
   Future<Map<String, dynamic>> _getFromUrl(String url,
       {Map<String, String> queryParameters,
-        Map<String, String> headers}) async {
+      Map<String, String> headers}) async {
     String finalUrl = url;
     if (queryParameters != null) {
       queryParameters.forEach((k, v) {
@@ -109,8 +108,8 @@ class GlobalConfiguration {
     headers.putIfAbsent("Accept", () => "application/json");
     var response = await http.get(Uri.encodeFull(finalUrl), headers: headers);
     if (response == null || response.statusCode != 200) {
-      throw new Exception('HTTP request failed, statusCode: ${response
-          ?.statusCode}, $finalUrl');
+      throw new Exception(
+          'HTTP request failed, statusCode: ${response?.statusCode}, $finalUrl');
     }
     return json.decode(response.body);
   }

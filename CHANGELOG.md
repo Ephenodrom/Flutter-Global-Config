@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.1.0] - 2019-06-17
+
+* Fix bug in setValue and improve usage of setValue method.
+
 ## [1.0.0] - 2019-06-01
 
 * Add new method loadFromPath

@@ -28,7 +28,7 @@ Update pubspec.yaml and add the following line to your dependencies.
 
 ```yaml
 dependencies:
-  global_configuration: ^1.0.0
+  global_configuration: ^1.1.0
 ```
 
 ## Import
@@ -194,14 +194,14 @@ This method makes a check for the given type of the value and then performs an u
     "key1": "value1",
     "key2": 1
   };
-  
-  GlobalConfiguration().loadFromMap(appSettings); // loading the configuration
-  print(GlobalConfiguration().getString("key1")); // output : value1
-  print(GlobalConfiguration().getString("key2")); // output : 1
-  GlobalConfiguration().setValue("key1", (string) => "value2"); // update the value for key1
-  GlobalConfiguration().setValue("key2", (int) => 2); // update the value for key2
-  print(GlobalConfiguration().getString("key1")); // output : value2
-  print(GlobalConfiguration().getString("key2")); // output : 2
+  final cfg = GlobalConfiguration();
+  cfg().loadFromMap(appSettings); // loading the configuration
+  print(cfg().getString("key1")); // output : value1
+  print(cfg().getString("key2")); // output : 1
+  cfg().setValue("key1", "value2"); // update the value for key1
+  cfg().setValue("key2", 2); // update the value for key2
+  print(cfg().getString("key1")); // output : value2
+  print(cfg().getString("key2")); // output : 2
 ```
 
 ### Full example
