@@ -11,6 +11,7 @@ them available everythere inside the app via a singleton.
 3. [Loading configuration](#loading-configuration)
    * [Load from asset](#load-from-asset)
    * [Load from path](#load-from-path)
+   * [Load from path into key](#load-from-path-into-key)
    * [Load from map inside .dart file](#load-from-map-inside-.dart-file)
    * [Load from url](#load-from-url)
 4. [Using the configuration in your app](#using-the-configuration-in-your-app)
@@ -28,7 +29,7 @@ Update pubspec.yaml and add the following line to your dependencies.
 
 ```yaml
 dependencies:
-  global_configuration: ^1.1.0
+  global_configuration: ^1.2.0
 ```
 
 ## Import
@@ -95,6 +96,23 @@ import 'package:global_configuration/global_configuration.dart';
 
 void main(){
   GlobalConfiguration().loadFromPath("/path/file.json");
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  ...
+}
+```
+
+### Load from path into key
+
+The same as loadFromPath, but the config is added under the given key.
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:global_configuration/global_configuration.dart';
+
+void main(){
+  GlobalConfiguration().loadFromPathIntoKey("/path/file.json", "env_settings");
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {

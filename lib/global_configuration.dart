@@ -49,6 +49,17 @@ class GlobalConfiguration {
   }
 
   ///
+  /// Loading a json configuration file from a custom [path] into the current app config with the given [key].
+  ///
+  Future<GlobalConfiguration> loadFromPathIntoKey(
+      String path, String key) async {
+    String content = await rootBundle.loadString(path);
+    Map<String, dynamic> configAsMap = json.decode(content);
+    appConfig.putIfAbsent(key, () => configAsMap);
+    return _singleton;
+  }
+
+  ///
   /// Loading a configuration file from the given [url] into the current app config using
   /// a http GET request to fetch the configuration.
   /// The request can be modified with [queryParameters] and [headers].

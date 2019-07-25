@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.2.0] - 2019-07-25
+
+* Add new method loadFromPathIntoKey
+
 ## [1.1.0] - 2019-06-17
 
 * Fix bug in setValue and improve usage of setValue method.
