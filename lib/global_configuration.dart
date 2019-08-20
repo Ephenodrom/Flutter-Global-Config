@@ -62,6 +62,7 @@ class GlobalConfiguration {
   ///
   /// Loading a configuration file from the given [url] into the current app config using
   /// a http GET request to fetch the configuration.
+  ///
   /// The request can be modified with [queryParameters] and [headers].
   ///
   Future<GlobalConfiguration> loadFromUrl(String url,
@@ -70,6 +71,21 @@ class GlobalConfiguration {
     Map<String, dynamic> configAsMap = await _getFromUrl(url,
         queryParameters: queryParameters, headers: headers);
     appConfig.addAll(configAsMap);
+    return _singleton;
+  }
+
+  ///
+  /// Loading a configuration file from the given [url] into the current app config with the given [key].
+  ///
+  /// It uses a http GET request to fetch the configuration.
+  /// The request can be modified with [queryParameters] and [headers].
+  ///
+  Future<GlobalConfiguration> loadFromUrlIntoKey(String url, String key,
+      {Map<String, String> queryParameters,
+      Map<String, String> headers}) async {
+    Map<String, dynamic> configAsMap = await _getFromUrl(url,
+        queryParameters: queryParameters, headers: headers);
+    appConfig.putIfAbsent(key, () => configAsMap);
     return _singleton;
   }
 

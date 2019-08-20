@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.3.0] - 2019-08-20
+
+* Add new method loadFromUrlIntoKey
+
 ## [1.2.0] - 2019-07-25
 
 * Add new method loadFromPathIntoKey

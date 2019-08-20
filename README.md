@@ -29,7 +29,7 @@ Update pubspec.yaml and add the following line to your dependencies.
 
 ```yaml
 dependencies:
-  global_configuration: ^1.2.0
+  global_configuration: ^1.3.0
 ```
 
 ## Import
