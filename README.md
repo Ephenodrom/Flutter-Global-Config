@@ -5,21 +5,26 @@ them available everythere inside the app via a singleton.
 
 ## Table of Contents
 
-1. [Install](#install)
+1. [Preamble](#preamble)
+2. [Install](#install)
    * [pubspec.yaml](#pubspec.yaml)
-2. [Import](#import)
-3. [Loading configuration](#loading-configuration)
+3. [Import](#import)
+4. [Loading configuration](#loading-configuration)
    * [Load from asset](#load-from-asset)
    * [Load from path](#load-from-path)
    * [Load from path into key](#load-from-path-into-key)
    * [Load from map inside .dart file](#load-from-map-inside-.dart-file)
    * [Load from url](#load-from-url)
-4. [Using the configuration in your app](#using-the-configuration-in-your-app)
-5. [Overriding configuration](#overriding-configuration)
-6. [Full Example](#full-example)
-7. [Changelog](#changelog)
-8. [Support](#support)
-9. [Copyright and license](#copyright-and-license)
+5. [Using the configuration in your app](#using-the-configuration-in-your-app)
+6. [Overriding configuration](#overriding-configuration)
+7. [Full Example](#full-example)
+8. [Changelog](#changelog)
+9. [Support](#support)
+10. [Copyright and license](#copyright-and-license)
+
+## Preamble
+
+This package is also part of the [EZ Flutter Framework](https://ez-flutter.de). 
 
 ## Install
 
