@@ -19,8 +19,7 @@ them available everythere inside the app via a singleton.
 6. [Overriding configuration](#overriding-configuration)
 7. [Full Example](#full-example)
 8. [Changelog](#changelog)
-9. [Support](#support)
-10. [Copyright and license](#copyright-and-license)
+9. [Copyright and license](#copyright-and-license)
 
 ## Preamble
 
@@ -234,11 +233,6 @@ You can find a full example in the [example folder](/example/main.dart).
 ## Changelog
 
 For a detailed changelog, see the [CHANGELOG.md](CHANGELOG.md) file
-
-## Support
-
-You like this repository or even use it in one of your projects? Feel free to donate a cup of coffee!
-Flattr : <https://flattr.com/@Ephenodrom>
 
 ## Copyright and license
 
