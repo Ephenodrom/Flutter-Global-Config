@@ -6,6 +6,7 @@ import 'dart:convert';
 
 ///
 /// Class for managing different configuration.
+///
 /// Use it with GlobalConfiguration() to access the singleton.
 ///
 class GlobalConfiguration {
@@ -29,6 +30,7 @@ class GlobalConfiguration {
 
   ///
   /// Loading a json configuration file with the given [name] into the current app config.
+  ///
   /// The file has to be placed at assets/cfg/
   ///
   Future<GlobalConfiguration> loadFromAsset(String name) async {
@@ -89,36 +91,66 @@ class GlobalConfiguration {
     return _singleton;
   }
 
-  /// Reads a value of any type from persistent storage.
+  ///
+  /// Reads a value of any type from persistent storage for the given [key].
+  ///
   dynamic get(String key) => appConfig[key];
 
-  /// Reads a value from persistent storage, throwing an exception if it's not a
-  /// bool.
+  ///
+  /// Reads a [bool] value from persistent storage for the given [key], throwing an exception if it's not a bool.
+  ///
   bool getBool(String key) => appConfig[key];
 
-  /// Reads a value from persistent storage, throwing an exception if it's not
-  /// an int.
+  ///
+  /// Reads a [int] value from persistent storage for the given [key], throwing an exception if it's not an int.
+  ///
   int getInt(String key) => appConfig[key];
 
-  /// Reads a value from persistent storage, throwing an exception if it's not a
-  /// double.
+  ///
+  /// Reads a [double] value from persistent storage for the given [key], throwing an exception if it's not a double.
+  ///
   double getDouble(String key) => appConfig[key];
 
-  /// Reads a value from persistent storage, throwing an exception if it's not a
-  /// String.
+  ///
+  /// Reads a [String] value from persistent storage for the given [key], throwing an exception if it's not a String.
+  ///
   String getString(String key) => appConfig[key];
+
+  ///
+  /// Clear the persistent storage. Only for Unit testing!
+  ///
+  void clear() => appConfig.clear();
 
   /// Write a value from persistent storage, throwing an exception if it's not
   /// the correct type
+  @Deprecated("use updateValue instead")
   void setValue(key, value) => value.runtimeType != appConfig[key].runtimeType
       ? throw ("wrong type")
       : appConfig.update(key, (dynamic) => value);
 
-  /// Adds any type to the persistent storage.
+  ///
+  /// Update the given [value] for the given [key] in the persistent storage.
+  ///
+  /// Throws an exception if the given [value] has not the same [Type].
+  ///
+  void updateValue(String key, dynamic value) =>
+      value.runtimeType != appConfig[key].runtimeType
+          ? throw ("wrong type")
+          : appConfig.update(key, (dynamic) => value);
+
+  ///
+  /// Adds the given [value] at the given [key] to the persistent storage.
+  ///
+  void addValue(String key, dynamic value) =>
+      appConfig.putIfAbsent(key, () => value);
+
+  ///
+  /// Adds the given [map] to the persistent storage.
+  ///
   add(Map<String, dynamic> map) => appConfig.addAll(map);
 
   ///
-  /// Sends a HTTP GET request to the given URL with the given PARAMETERS
+  /// Sends a HTTP GET request to the given [url] with the given [queryParameters] and [headers].
   ///
   Future<Map<String, dynamic>> _getFromUrl(String url,
       {Map<String, String> queryParameters,

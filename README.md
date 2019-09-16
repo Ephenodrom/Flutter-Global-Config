@@ -23,7 +23,7 @@ them available everythere inside the app via a singleton.
 
 ## Preamble
 
-This package is also part of the [EZ Flutter Framework](https://ez-flutter.de). 
+This package is also part of the [EZ Flutter Framework](https://ez-flutter.de).
 
 ## Install
 
@@ -33,7 +33,7 @@ Update pubspec.yaml and add the following line to your dependencies.
 
 ```yaml
 dependencies:
-  global_configuration: ^1.3.0
+  global_configuration: ^1.4.0
 ```
 
 ## Import
@@ -201,7 +201,7 @@ class CustomWidget extends StatelessWidget {
     @override
      Widget build(BuildContext context) {
         // Access the config in the build method
-        return new Text(GlobalConfiguration().getString("key2")); // prints value2
+        return Text(GlobalConfiguration().getString("key2")); // prints value2
      }
 }
 ```
@@ -216,14 +216,13 @@ This method makes a check for the given type of the value and then performs an u
     "key1": "value1",
     "key2": 1
   };
-  final cfg = GlobalConfiguration();
-  cfg().loadFromMap(appSettings); // loading the configuration
-  print(cfg().getString("key1")); // output : value1
-  print(cfg().getString("key2")); // output : 1
-  cfg().setValue("key1", "value2"); // update the value for key1
-  cfg().setValue("key2", 2); // update the value for key2
-  print(cfg().getString("key1")); // output : value2
-  print(cfg().getString("key2")); // output : 2
+  GlobalConfiguration().loadFromMap(appSettings); // loading the configuration
+  print(GlobalConfiguration().getString("key1")); // output : value1
+  print(GlobalConfiguration().getString("key2")); // output : 1
+  GlobalConfiguration().updateValue("key1", "value2"); // update the value for key1
+  GlobalConfiguration().updateValue("key2", 2); // update the value for key2
+  print(GlobalConfiguration().getString("key1")); // output : value2
+  print(GlobalConfiguration().getString("key2")); // output : 2
 ```
 
 ### Full example

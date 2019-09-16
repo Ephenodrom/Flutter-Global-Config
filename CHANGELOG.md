@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0] - 2019-09-16
+
+* Add new method updateValue(), that replaces setValue()
+* Add new method addValue()
+* Add new method clear()
+* Add new Unit tests
+* Update documentation
+
 ## [1.3.0] - 2019-08-20
 
 * Add new method loadFromUrlIntoKey
@@ -10,7 +18,7 @@
 
 ## [1.1.0] - 2019-06-17
 
-* Fix bug in setValue and improve usage of setValue method.
+* Fix bug in setValue and improve usage of setValue method
 
 ## [1.0.0] - 2019-06-01
 
