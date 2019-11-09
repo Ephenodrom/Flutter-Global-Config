@@ -92,14 +92,14 @@ class MyApp extends StatelessWidget {
 
 Create a file anywhere inside your app.
 
-#### Load configuration fro path at app start
+#### Load configuration from path at app start
 
 ```dart
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
 
 void main(){
-  GlobalConfiguration().loadFromPath("/path/file.json");
+  await GlobalConfiguration().loadFromPath("/path/file.json");
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -116,7 +116,7 @@ import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
 
 void main(){
-  GlobalConfiguration().loadFromPathIntoKey("/path/file.json", "env_settings");
+  await GlobalConfiguration().loadFromPathIntoKey("/path/file.json", "env_settings");
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
