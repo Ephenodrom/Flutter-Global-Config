@@ -129,8 +129,9 @@ class GlobalConfiguration {
       : appConfig.update(key, (dynamic) => value);
 
   ///
-  /// Update the given [value] for the given [key] in the persistent storage.
+  /// Update the given [value] for the given [key] in the storage.
   ///
+  /// The updated value is *NOT* persistent
   /// Throws an exception if the given [value] has not the same [Type].
   ///
   void updateValue(String key, dynamic value) =>
@@ -139,13 +140,15 @@ class GlobalConfiguration {
           : appConfig.update(key, (dynamic) => value);
 
   ///
-  /// Adds the given [value] at the given [key] to the persistent storage.
+  /// Adds the given [value] at the given [key] to the storage.
+  ///
+  /// The key and value is *NOT* persistent
   ///
   void addValue(String key, dynamic value) =>
       appConfig.putIfAbsent(key, () => value);
 
   ///
-  /// Adds the given [map] to the persistent storage.
+  /// Adds the given [map] to the storage.
   ///
   add(Map<String, dynamic> map) => appConfig.addAll(map);
 
