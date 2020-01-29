@@ -39,10 +39,18 @@ void main() {
     fail("Expected Exception!");
   });
 
+  test('Testing update null value.', () async {
+    GlobalConfiguration().clear();
+    final Map<String, dynamic> config1 = {"hello": "world", "foo": null};
+    GlobalConfiguration().loadFromMap(config1);
+
+    GlobalConfiguration().updateValue("foo", 321);
+    expect(GlobalConfiguration().getInt("foo"), 321);
+  });
+
   test('Testing addValue', () async {
     GlobalConfiguration().clear();
     GlobalConfiguration().addValue("hello", "world");
     expect(GlobalConfiguration().getString("hello"), "world");
   });
-
 }

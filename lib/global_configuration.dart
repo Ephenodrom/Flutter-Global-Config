@@ -31,10 +31,17 @@ class GlobalConfiguration {
   ///
   /// Loading a json configuration file with the given [name] into the current app config.
   ///
-  /// The file has to be placed at assets/cfg/
+  /// If the given [name] does not have the file extension .json, it will be automatically added.
+  ///
+  /// The file has to be placed at assets/cfg/.
+  ///
+  /// Use the **loadFromPath** method if you want to store the file at another place.
   ///
   Future<GlobalConfiguration> loadFromAsset(String name) async {
-    String content = await rootBundle.loadString("assets/cfg/$name.json");
+    if (!name.endsWith(".json")) {
+      name = "$name.json";
+    }
+    String content = await rootBundle.loadString("assets/cfg/$name");
     Map<String, dynamic> configAsMap = json.decode(content);
     appConfig.addAll(configAsMap);
     return _singleton;
@@ -134,10 +141,13 @@ class GlobalConfiguration {
   /// The updated value is *NOT* persistent
   /// Throws an exception if the given [value] has not the same [Type].
   ///
-  void updateValue(String key, dynamic value) =>
-      value.runtimeType != appConfig[key].runtimeType
-          ? throw ("wrong type")
-          : appConfig.update(key, (dynamic) => value);
+  void updateValue(String key, dynamic value) {
+    if (appConfig[key] != null &&
+        value.runtimeType != appConfig[key].runtimeType) {
+      throw ("The persistent type of ${appConfig[key].runtimeType} does not match the given type ${value.runtimeType}");
+    }
+    appConfig.update(key, (dynamic) => value);
+  }
 
   ///
   /// Adds the given [value] at the given [key] to the storage.

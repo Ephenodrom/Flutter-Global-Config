@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.5.0] - 2020-01-29
+
+* Add possability to update null values (#10)
+* Improve config loading from file (#9)
+
 ## [1.4.0] - 2019-09-16
 
 * Add new method updateValue(), that replaces setValue()
