@@ -208,7 +208,7 @@ class CustomWidget extends StatelessWidget {
 
 ## Overriding configuration
 
-Sometimes it is necessary to override data in the configuration. This can be done by the setValue method.
+Sometimes it is necessary to override data in the configuration. This can be done by the updateValue method.
 This method makes a check for the given type of the value and then performs an update the configuration map.
 
 ```dart
