@@ -143,7 +143,7 @@ final Map<String, String> appSettings = {
 ```dart
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'config/Config1.config.dart';
+import 'config/app_settings.config.dart';
 
 void main(){
   GlobalConfiguration().loadFromMap(appSettings);
@@ -195,7 +195,7 @@ class CustomWidget extends StatelessWidget {
 
     CustomWiget(){
         // Access the config in the constructor
-        print(GlobalConfiguration().getString("key1"); // prints value1
+        print(GlobalConfiguration().getString("key1")); // prints value1
     }
 
     @override
