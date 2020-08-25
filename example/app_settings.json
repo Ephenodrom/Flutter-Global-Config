@@ -1,0 +1,21 @@
+{
+    "key1": "value1",
+    "key2": "value2",
+    "appColors": {
+        "primaryColor": "#2e7d32",
+        "primaryLightColor": "#60ad5e",
+        "primaryDarkColor": "#005005",
+        "secondaryColor": "#afb42b",
+        "secondaryLightColor": "#e4e65e",
+        "secondaryDarkColor": "#7c8500",
+        "primaryTextColor": "#ffffff"
+    },
+    "stringValue": "Helo!!",
+    "integerValue": 123,
+    "booleanValue": true,
+    "otherValues": {
+        "moreDeepValues": {
+            "mySecretValue": "awesome"
+        }
+    }
+}

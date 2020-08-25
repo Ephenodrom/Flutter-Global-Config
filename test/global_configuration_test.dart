@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:global_configuration/global_configuration.dart';
@@ -12,6 +14,15 @@ void main() {
     GlobalConfiguration().loadFromMap(config2);
     expect(GlobalConfiguration().getString("key1"), "value1");
     expect(GlobalConfiguration().getString("key3"), "value3");
+  });
+
+  test('Testing read a deep value', () async {
+    GlobalConfiguration().clear();
+    final jsonString = '{"values" : { "key1" : "value1", "key2" : "value2" } }';
+    Map config1 = json.decode(jsonString);
+
+    GlobalConfiguration().loadFromMap(config1);
+    expect(GlobalConfiguration().getDeepValue<String>("values:key2"), "value2");
   });
 
   test('Testing loading json into config from url.', () async {
