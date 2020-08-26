@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:ui';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:global_configuration/global_configuration.dart';
@@ -23,6 +25,16 @@ void main() {
 
     GlobalConfiguration().loadFromMap(config1);
     expect(GlobalConfiguration().getDeepValue<String>("values:key2"), "value2");
+  });
+
+  test('Testing read a color', () async {
+    GlobalConfiguration().clear();
+    final jsonString = '{"color" : "#F44336" }';
+    Map config1 = json.decode(jsonString);
+
+    GlobalConfiguration().loadFromMap(config1);
+    expect(
+        GlobalConfiguration().getDeepValue<Color>("color"), Color(0xFFF44336));
   });
 
   test('Testing loading json into config from url.', () async {
