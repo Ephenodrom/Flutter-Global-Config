@@ -124,7 +124,7 @@ class GlobalConfiguration {
   ///     }
   /// }
   ///
-  /// You almost can use getDeepValue<Color> when the json color value is
+  /// You can also use getDeepValue<Color> when the json color value is
   /// an string hexadecimal like "#2e7d32".
   ///
   T getDeepValue<T>(String keyPath) {
