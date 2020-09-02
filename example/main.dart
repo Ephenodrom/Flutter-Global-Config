@@ -5,13 +5,11 @@ import 'DevSettings.config.dart';
 
 void main() async {
   GlobalConfiguration().loadFromMap(appSettings).loadFromMap(devSettings);
-  await GlobalConfiguration().loadFromUrl("https://swapi.co/api/people/1");
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
-  MyApp(){
+  MyApp() {
     // Access configuration at constructor
     GlobalConfiguration cfg = new GlobalConfiguration();
     print("Key1 has value ${cfg.getString("key1")}");

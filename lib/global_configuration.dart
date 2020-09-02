@@ -1,5 +1,7 @@
 library global_configuration;
 
+import 'dart:ui';
+
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -11,6 +13,10 @@ import 'dart:convert';
 ///
 class GlobalConfiguration {
   static GlobalConfiguration _singleton = new GlobalConfiguration._internal();
+
+  //  conver string hex color like #AABBCC to Color widget
+  Color _hexStringToColor(String code) =>
+      new Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
 
   factory GlobalConfiguration() {
     return _singleton;
@@ -104,23 +110,64 @@ class GlobalConfiguration {
   dynamic get(String key) => appConfig[key];
 
   ///
+  /// Reads a value of T type from persistent storage for the given [key].
+  ///
+  T getValue<T>(String key) => appConfig[key] as T;
+
+  ///
+  /// Reads a value of T type from persistent storage for the given [keyPath]
+  /// when [keyPath] is a Json path separated by ':' like 'appColors:primaryColor'
+  /// when our Json file is:
+  /// {
+  ///     "appColors": {
+  ///         "primaryColor": "#2e7d32"
+  ///     }
+  /// }
+  ///
+  /// You can also use getDeepValue<Color> when the json color value is
+  /// an string hexadecimal like "#2e7d32".
+  ///
+  T getDeepValue<T>(String keyPath) {
+    dynamic _value;
+
+    keyPath.split(":").forEach((element) {
+      if (_value == null)
+        _value = appConfig[element];
+      else
+        _value = _value[element];
+    });
+
+    if (_value != null) {
+      if (T == Color) _value = _hexStringToColor(_value);
+
+      return _value as T;
+    }
+
+    return null;
+  }
+
+  ///
   /// Reads a [bool] value from persistent storage for the given [key], throwing an exception if it's not a bool.
   ///
+  @Deprecated("use getValue instead")
   bool getBool(String key) => appConfig[key];
 
   ///
   /// Reads a [int] value from persistent storage for the given [key], throwing an exception if it's not an int.
   ///
+  @Deprecated("use getValue instead")
   int getInt(String key) => appConfig[key];
 
   ///
   /// Reads a [double] value from persistent storage for the given [key], throwing an exception if it's not a double.
   ///
+  @Deprecated("use getValue instead")
   double getDouble(String key) => appConfig[key];
 
   ///
   /// Reads a [String] value from persistent storage for the given [key], throwing an exception if it's not a String.
   ///
+  @Deprecated("use getValue instead")
   String getString(String key) => appConfig[key];
 
   ///
