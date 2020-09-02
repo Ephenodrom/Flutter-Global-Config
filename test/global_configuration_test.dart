@@ -37,12 +37,6 @@ void main() {
         GlobalConfiguration().getDeepValue<Color>("color"), Color(0xFFF44336));
   });
 
-  test('Testing loading json into config from url.', () async {
-    GlobalConfiguration().clear();
-    await GlobalConfiguration().loadFromUrl("https://swapi.co/api/people/1");
-    expect(GlobalConfiguration().getString("name"), "Luke Skywalker");
-  });
-
   test('Testing updateValue().', () async {
     GlobalConfiguration().clear();
     final Map<String, dynamic> config1 = {"hello": "world", "foo": 123};

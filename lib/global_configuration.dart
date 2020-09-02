@@ -12,11 +12,13 @@ import 'dart:convert';
 /// Use it with GlobalConfiguration() to access the singleton.
 ///
 class GlobalConfiguration {
-  static GlobalConfiguration _singleton = new GlobalConfiguration._internal();
+  static GlobalConfiguration _singleton = GlobalConfiguration._internal();
 
-  //  conver string hex color like #AABBCC to Color widget
+  ///
+  ///  Convert string hex color like #AABBCC to Color widget
+  ///
   Color _hexStringToColor(String code) =>
-      new Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
+      Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
 
   factory GlobalConfiguration() {
     return _singleton;
@@ -118,14 +120,17 @@ class GlobalConfiguration {
   /// Reads a value of T type from persistent storage for the given [keyPath]
   /// when [keyPath] is a Json path separated by ':' like 'appColors:primaryColor'
   /// when our Json file is:
+  ///
+  /// ```
   /// {
   ///     "appColors": {
   ///         "primaryColor": "#2e7d32"
   ///     }
   /// }
+  /// ```
   ///
   /// You can also use getDeepValue<Color> when the json color value is
-  /// an string hexadecimal like "#2e7d32".
+  /// a string hexadecimal like "#2e7d32".
   ///
   T getDeepValue<T>(String keyPath) {
     dynamic _value;
@@ -149,25 +154,25 @@ class GlobalConfiguration {
   ///
   /// Reads a [bool] value from persistent storage for the given [key], throwing an exception if it's not a bool.
   ///
-  @Deprecated("use getValue instead")
+  @Deprecated("Use getValue instead")
   bool getBool(String key) => appConfig[key];
 
   ///
   /// Reads a [int] value from persistent storage for the given [key], throwing an exception if it's not an int.
   ///
-  @Deprecated("use getValue instead")
+  @Deprecated("Use getValue instead")
   int getInt(String key) => appConfig[key];
 
   ///
   /// Reads a [double] value from persistent storage for the given [key], throwing an exception if it's not a double.
   ///
-  @Deprecated("use getValue instead")
+  @Deprecated("Use getValue instead")
   double getDouble(String key) => appConfig[key];
 
   ///
   /// Reads a [String] value from persistent storage for the given [key], throwing an exception if it's not a String.
   ///
-  @Deprecated("use getValue instead")
+  @Deprecated("Use getValue instead")
   String getString(String key) => appConfig[key];
 
   ///
@@ -177,7 +182,7 @@ class GlobalConfiguration {
 
   /// Write a value from persistent storage, throwing an exception if it's not
   /// the correct type
-  @Deprecated("use updateValue instead")
+  @Deprecated("Use updateValue instead")
   void setValue(key, value) => value.runtimeType != appConfig[key].runtimeType
       ? throw ("wrong type")
       : appConfig.update(key, (dynamic) => value);
