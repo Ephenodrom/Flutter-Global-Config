@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.6.0] - 2020-00-09
+
+* Improve access to nested configuration (#16)
+* Merged pull request #15
+
 ## [1.5.0] - 2020-01-29
 
 * Add possability to update null values (#10)
