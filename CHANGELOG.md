@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.6.0] - 2020-00-09
+## [1.6.0] - 2020-09-02
 
 * Improve access to nested configuration (#16)
 * Merged pull request #15
