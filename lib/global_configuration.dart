@@ -83,8 +83,8 @@ class GlobalConfiguration {
   /// The request can be modified with [queryParameters] and [headers].
   ///
   Future<GlobalConfiguration> loadFromUrl(String url,
-      {Map<String, String> queryParameters,
-      Map<String, String> headers}) async {
+      {Map<String, String>? queryParameters,
+      Map<String, String>? headers}) async {
     Map<String, dynamic> configAsMap = await _getFromUrl(url,
         queryParameters: queryParameters, headers: headers);
     appConfig.addAll(configAsMap);
@@ -98,8 +98,8 @@ class GlobalConfiguration {
   /// The request can be modified with [queryParameters] and [headers].
   ///
   Future<GlobalConfiguration> loadFromUrlIntoKey(String url, String key,
-      {Map<String, String> queryParameters,
-      Map<String, String> headers}) async {
+      {Map<String, String>? queryParameters,
+      Map<String, String>? headers}) async {
     Map<String, dynamic> configAsMap = await _getFromUrl(url,
         queryParameters: queryParameters, headers: headers);
     appConfig.putIfAbsent(key, () => configAsMap);
@@ -132,7 +132,7 @@ class GlobalConfiguration {
   /// You can also use getDeepValue<Color> when the json color value is
   /// a string hexadecimal like "#2e7d32".
   ///
-  T getDeepValue<T>(String keyPath) {
+  T? getDeepValue<T>(String keyPath) {
     dynamic _value;
 
     keyPath.split(":").forEach((element) {
@@ -218,8 +218,8 @@ class GlobalConfiguration {
   /// Sends a HTTP GET request to the given [url] with the given [queryParameters] and [headers].
   ///
   Future<Map<String, dynamic>> _getFromUrl(String url,
-      {Map<String, String> queryParameters,
-      Map<String, String> headers}) async {
+      {Map<String, String>? queryParameters,
+      Map<String, String>? headers}) async {
     String finalUrl = url;
     if (queryParameters != null) {
       queryParameters.forEach((k, v) {
@@ -230,10 +230,11 @@ class GlobalConfiguration {
       headers = Map<String, String>();
     }
     headers.putIfAbsent("Accept", () => "application/json");
-    var response = await http.get(Uri.encodeFull(finalUrl), headers: headers);
-    if (response == null || response.statusCode != 200) {
+    var encodedUri = Uri.encodeFull(finalUrl);
+    var response = await http.get(Uri.parse(encodedUri), headers: headers);
+    if (response.statusCode != 200) {
       throw new Exception(
-          'HTTP request failed, statusCode: ${response?.statusCode}, $finalUrl');
+          'HTTP request failed, statusCode: ${response.statusCode}, $finalUrl');
     }
     return json.decode(response.body);
   }
