@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.0.0-nullsafety.1] - 2021-04-06
+
+* Update dependencies
+
 ## [2.0.0-nullsafety.0] - 2021-03-05
 
 * Migrate to nullsafety
