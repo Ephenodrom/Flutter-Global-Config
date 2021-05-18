@@ -106,7 +106,7 @@ Create a file anywhere inside your app.
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
 
-void main(){
+void main() async {
   await GlobalConfiguration().loadFromPath("/path/file.json");
   runApp(MyApp());
 }
@@ -123,7 +123,7 @@ The same as loadFromPath, but the config is added under the given key.
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
 
-void main(){
+void main() async {
   await GlobalConfiguration().loadFromPathIntoKey("/path/file.json", "env_settings");
   runApp(MyApp());
 }
@@ -153,7 +153,7 @@ import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'config/app_settings.config.dart';
 
-void main(){
+void main() async {
   GlobalConfiguration().loadFromMap(appSettings);
   runApp(MyApp());
 }
