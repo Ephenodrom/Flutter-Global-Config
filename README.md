@@ -40,7 +40,7 @@ Or use the nullsafety preview version.
 
 ```yaml
 dependencies:
-  basic_utils: ^2.0.0-nullsafety.1
+  global_configuration: ^2.0.0-nullsafety.1
 ```
 
 
