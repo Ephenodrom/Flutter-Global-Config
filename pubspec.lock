@@ -71,10 +71,10 @@ packages:
     dependency: "direct main"
     description:
       name: http
-      sha256: "2e8cf3a1b5a97ec9f88ec74fce83a3e05196df027f382ba3f94403b75292fabf"
+      sha256: "759d1a329847dd0f39226c688d3e06a6b8679668e350e2891a6474f8b4bb8525"
       url: "https://pub.dev"
     source: hosted
-    version: "0.13.1"
+    version: "1.1.0"
   http_parser:
     dependency: transitive
     description:
@@ -115,14 +115,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.3"
-  pedantic:
-    dependency: transitive
-    description:
-      name: pedantic
-      sha256: "207f9260c7a46946d09619b5ba1caf1fd50faf10fe3bae0176c626dceac5193d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.10.0"
   sky_engine:
     dependency: transitive
     description: flutter
