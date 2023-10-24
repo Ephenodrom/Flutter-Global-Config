@@ -5,21 +5,30 @@ them available everythere inside the app via a singleton.
 
 ## Table of Contents
 
-1. [Preamble](#preamble)
-2. [Install](#install)
-   * [pubspec.yaml](#pubspec.yaml)
-3. [Import](#import)
-4. [Loading configuration](#loading-configuration)
-   * [Load from asset](#load-from-asset)
-   * [Load from path](#load-from-path)
-   * [Load from path into key](#load-from-path-into-key)
-   * [Load from map inside .dart file](#load-from-map-inside-.dart-file)
-   * [Load from url](#load-from-url)
-5. [Using the configuration in your app](#using-the-configuration-in-your-app)
-6. [Overriding configuration](#overriding-configuration)
-7. [Full Example](#full-example)
-8. [Changelog](#changelog)
-9. [Copyright and license](#copyright-and-license)
+- [Flutter Global Configuration](#flutter-global-configuration)
+  - [Table of Contents](#table-of-contents)
+  - [Preamble](#preamble)
+  - [Install](#install)
+    - [pubspec.yaml](#pubspecyaml)
+  - [Import](#import)
+  - [Loading configuration](#loading-configuration)
+    - [Load from asset](#load-from-asset)
+      - [Creating a configuration file inside assets/cfg folder](#creating-a-configuration-file-inside-assetscfg-folder)
+      - [Load configuration from assets at app start](#load-configuration-from-assets-at-app-start)
+    - [Load from path](#load-from-path)
+      - [Creating a configuration file anywhere](#creating-a-configuration-file-anywhere)
+      - [Load configuration from path at app start](#load-configuration-from-path-at-app-start)
+    - [Load from path into key](#load-from-path-into-key)
+    - [Load from map](#load-from-map)
+      - [Creating a configuration inside .dart file](#creating-a-configuration-inside-dart-file)
+      - [Load configuration from map at app start](#load-configuration-from-map-at-app-start)
+    - [Load from url](#load-from-url)
+      - [Load configuration from url at app start](#load-configuration-from-url-at-app-start)
+  - [Using the configuration in your app](#using-the-configuration-in-your-app)
+  - [Overriding configuration](#overriding-configuration)
+    - [Full example](#full-example)
+  - [Changelog](#changelog)
+  - [Copyright and license](#copyright-and-license)
 
 ## Preamble
 
@@ -33,16 +42,8 @@ Update pubspec.yaml and add the following line to your dependencies.
 
 ```yaml
 dependencies:
-  global_configuration: ^1.6.0
+  global_configuration: ^2.0.0
 ```
-
-Or use the nullsafety preview version.
-
-```yaml
-dependencies:
-  global_configuration: ^2.0.0-nullsafety.1
-```
-
 
 ## Import
 
@@ -245,7 +246,7 @@ For a detailed changelog, see the [CHANGELOG.md](CHANGELOG.md) file
 
 MIT License
 
-Copyright (c) 2019 Ephenodrom
+Copyright (c) 2023 Ephenodrom
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
